@@ -5,10 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.saifi369.coroutinesexample.databinding.ActivityMainBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.math.BigInteger
 import kotlin.random.Random
 
@@ -26,18 +23,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRunCode.setOnClickListener {
 
-            CoroutineScope(Dispatchers.Main.immediate).launch {
-                delay(3000)
-                showMessage()
+            CoroutineScope(Dispatchers.Main).launch {
+                val number = findBigPrime()       //Blocking call or suspending call?
+                Log.d("MyTag",number.toString())
             }
         }
     }
 
-    private fun showMessage(){
+    private suspend fun showMessage(){
         Toast.makeText(this@MainActivity, "Hello", Toast.LENGTH_SHORT).show()
+
+        findBigPrime()
     }
 
-    suspend fun findBigPrime(): BigInteger =
+    suspend fun findBigPrime(): BigInteger = withContext(Dispatchers.Default){
         BigInteger.probablePrime(4096, java.util.Random())
-
+    }
 }
