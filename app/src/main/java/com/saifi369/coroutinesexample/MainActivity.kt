@@ -23,20 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRunCode.setOnClickListener {
 
-            CoroutineScope(Dispatchers.Main).launch {
-                val number = findBigPrime()       //Blocking call or suspending call?
-                Log.d("MyTag",number.toString())
-            }
         }
-    }
-
-    private suspend fun showMessage(){
-        Toast.makeText(this@MainActivity, "Hello", Toast.LENGTH_SHORT).show()
-
-        findBigPrime()
-    }
-
-    suspend fun findBigPrime(): BigInteger = withContext(Dispatchers.Default){
-        BigInteger.probablePrime(4096, java.util.Random())
     }
 }
