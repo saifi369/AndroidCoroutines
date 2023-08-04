@@ -26,19 +26,8 @@ On Android, coroutines help to manage long-running tasks that might otherwise bl
 * Suspend Functions
 * Coroutine Builders (**launch, async & runBlocking**)
 * Coroutine Scope and Context
-* Coroutine Dispatchers (**Default, Main, IO**)
-* Change Coroutine thread/context using **withContext**
-* Coroutine Scopes for Android - **viewModelScope, lifeCycleScope**
-* Sequential network requests with Coroutines
-* Main safe with Coroutines
-* async/await - Receiving results in future
-* Parallel network requests with Coroutines
-* Coroutine Jobs & their types
-* withTimeOut & retry
-* Structured concurrency with Coroutines
-* Coroutine Cancellation
-* Coroutine error handling with try catch
-* Coroutine error handler
+* Rest of the topics will be covered in another barnch 
+
 
 # Contact Info
 You can contact me if you have any problem related to code or video.
