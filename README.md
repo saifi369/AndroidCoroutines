@@ -26,7 +26,9 @@ On Android, coroutines help to manage long-running tasks that might otherwise bl
 * Suspend Functions
 * Coroutine Builders (**launch, async & runBlocking**)
 * Coroutine Scope and Context
-* Rest of the topics will be covered in another barnch 
+* Coroutine Dispatchers (**Default, Main, IO**)
+* Change Coroutine thread/context using **withContext**
+* Rest of the topics will be covered in another branch 
 
 
 # Contact Info
