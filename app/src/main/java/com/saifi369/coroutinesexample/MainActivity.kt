@@ -1,44 +1,28 @@
 package com.saifi369.coroutinesexample
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
-import android.widget.Button
-import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.net.URL
+import com.saifi369.coroutinesexample.databinding.ActivityMainBinding
+import kotlinx.coroutines.*
+import java.math.BigInteger
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+    private val binding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        //set app theme
+        setTheme(R.style.Theme_CoroutinesExample)
+        setContentView(binding.root)
 
-        val btnLoadImage = findViewById<Button>(R.id.btn_load_image)
-        val imageView = findViewById<ImageView>(R.id.im_image)
+        binding.btnRunCode.setOnClickListener {
 
-        btnLoadImage.setOnClickListener {
-
-            CoroutineScope(Dispatchers.Main).launch {
-                try {
-                    Log.d("MyTag", "onCreate: ThreadName: ${Thread.currentThread().name}")
-                    val url = URL("https://i.redd.it/bfc0pz8qdji61.jpg")
-                    val bitmap = BitmapFactory.decodeStream(url.openStream())
-
-                    withContext(Dispatchers.Main) {
-                        Log.d(
-                            "MyTag",
-                            "onCreate withContext: ThreadName: ${Thread.currentThread().name}"
-                        )
-                        imageView.setImageBitmap(bitmap)
-                    }
-                } catch (e: Exception) {
-                    Log.d("MyTag", "onCreate: ${e}")
-                }
-            }
         }
     }
 }
